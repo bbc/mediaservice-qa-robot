@@ -3828,3 +3828,22 @@ Then
 ```
 modav-spud apply env
 ```"
+268,White-pages's purpose,"White Pages is a component in the 2017 File Based Delivery (FBD) workflow. It receives RightChanged messages from the On Demand Manager and attempts to find a corresponding subtitles file in subherd's bucket - mapping between VPID and UID to do so if required. If one is found, White Pages will send a message to Subherd so that the relevant conversion can take place. Note: Not all suppliers of FBD assets are yet using the 2017 FBD workflow"
+269,White-pages's inputs and outputs,LiveModavWhitePagesResources-Queue-TBC (in modav-production account)
+270,White-pages's architecture,"A Java Spring Boot app, built and deployed and configured by Cosmos."
+271,White-pages's deployment,This app is deployed to the Amazon cloud via Cosmos.White Pages is deployed to the modav-production AWS account
+272,White-pages's configuration and licensing,"Configuration via:Example of file-based-delivery-subtitle-extensions.json:white-pages parses language and purpose from subtitle filename if available or infer from this config file. For each language and purpose, white-pages picks the best one based on extension priorities from this config file.No special licensing considerations."
+273,White-pages's database,None.
+274,White-pages's dependencies,None provided.The Video Factory FBD workflow:
+275,"White-pages's changes, maintenance and outages","Impact of outage:Once the component is back up again, the delayed work will be processed - i.e. no work will be lost (as long as the component was down for less than 4 days). However the downstream workflow may be busy for a while.Stopping and starting the component may cause messages to be processed twice, but this is considered harmless."
+276,White-pages's backup and recovery,"Not required. The application is deployed via Cosmos, and is stateless."
+277,White-pages ispy event 'white-pages.complete',Process was completed
+278,White-pages ispy event 'white-pages.badmessage',Bad message
+279,White-pages ispy event 'white-pages.reading',Syncopaticaption recieved a message
+280,White-pages ispy event 'white-pages.added.activity.id',"White pages has set the activity id of the messageODM does not currently send an activity id.  If whitepages receives a message with no activity id it will add one.  If it receives a message with an activity id, it uses it."
+281,White-pages ispy event 'white-pages.exception',An exception occurs
+282,White-pages ispy event 'white-pages.found.matching.file',White pages found a file matching the VPID in the message in subherds bucket
+283,White-pages ispy event 'white-pages.no.matching.file',"White pages could not find a matching file, the message shall be discarded"
+284,White-pages ispy event 'white-pages.fetch.version.error.client',A 4xx error was received when contacting PIPS
+285,White-pages ispy event 'white-pages.fetch.version.error.server',A 5xx error was received when contacting PIPS
+286,White-pages ispy event 'white-pages.fetch.version.error.malformed',The URL requesterd from PIPS is invalid

@@ -6,3 +6,5 @@ pandas
 numpy
 faiss-cpu==1.6.5
 datasets
+bs4
+requests-pkcs12

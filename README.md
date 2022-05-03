@@ -13,3 +13,7 @@ pip install -r requirements.txt
 flask run
 ```
 Then open browser http://127.0.0.1:5000/ 
+
+## tools
+There are some tools under /tools to extract question-answer pair from runbook, README and component tests and append the result to a csv file. 
+After you get all the data in the csv file, delete data/demo.csv and demo.index, run ```python tools/add-index.py --csv_in your_csv.csv  --csv_out data/demo.csv``` to add id for the data.
